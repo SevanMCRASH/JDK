@@ -1,2 +1,2 @@
-# JDK
-My background in JAVA is not that good please help out in anyway that you can
+# The Noob of JAVA XD
+Any comments will help please take a look at my code
