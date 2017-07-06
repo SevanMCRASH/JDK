@@ -1,0 +1,81 @@
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.File;
+public class ArrayOperations {
+
+	public static void main(String[] args) throws FileNotFoundException
+	{
+	String filename = args[0];//basic 1-d array with 0 value
+	
+	File file = new File(filename);
+	Scanner inputFile = new Scanner(file);
+	
+	int size = 0;
+	
+	while(inputFile.hasNext())
+	{
+		inputFile.nextDouble();
+		size++;
+	}
+	
+	inputFile.close();
+	//////////////////////////////
+	double[] numbers = new double[size];
+	inputFile = new Scanner(file);
+	
+	for(int i =0;i <size;i++)
+	{
+		numbers[i] = inputFile.nextDouble();
+	}
+	
+	inputFile.close();
+	//////////////////////////////////
+	//Total: -1813.08000000001
+	System.out.println("Total: " + gettotal(numbers));
+	System.out.println("Average: " + getAverage(numbers));
+	System.out.println("Highest: " + getHighest(numbers));
+	System.out.println("Lowest: " + getLowest(numbers));
+	
+
+	}//main
+	
+	public static double gettotal(double[] array){
+		double sum= 0.0;
+		for(double element : array)
+		{
+			sum += element;
+		}
+		return sum;	
+	}
+	
+	public static double getAverage(double[] array){
+		return gettotal(array)/ array.length;//ex 100/number of array
+	}
+	
+	public static double getHighest(double[] array){
+		double highest = array[0];
+		for(double element : array)
+		{
+			if(highest < element)
+			{
+				highest = element;
+			}
+		}
+		return highest;	
+	}
+	
+	public static double getLowest(double[] array){
+		double lowest = array[0];
+		for(double element : array)
+		{
+			if(lowest > element)
+			{
+				lowest = element;
+			}
+		}
+		return lowest;	
+	}
+
+	
+
+}
