@@ -1,0 +1,62 @@
+import java.util.Scanner;
+public class Payroll {
+
+	public static void main(String[] args) 
+	{
+		Scanner input = new Scanner(System.in);
+		int employnum [] = {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
+		for(int i = 0; i < 7; i++)
+		{
+			System.out.println("employe number "+(i+1) + " has the ID "+ employnum[i]);
+		}
+		double grosswage[] = wage(input);
+		returnwage(employnum,grosswage,input);
+		input.close();
+	}
+	public static double[] wage(Scanner input)//must have [] for returing array
+	{
+		int employhour[] = new int [7];//array of 7 accptes int
+		double payhour[] = new double [7];//array of 7 accpets double
+		double grosswage[] = new double[7];
+		for(int i = 0; i < employhour.length; i++)
+		{
+			System.out.println("Please enter the empolye " + (i+1) + " hours.");
+			employhour[i] = input.nextInt();// input hours for each empolyee
+			while (employhour[i] < 0)
+			{
+				System.out.println("Do not accept negative values for hours or numbers less than 6.00 for pay rate.");
+				employhour[i] = input.nextInt();
+			}
+			System.out.println("Please enter the empolye " + (i+1) + " payrate.");
+			payhour[i] = input.nextDouble();// input hours for each empolyee
+			while (payhour[i] < 6.0)
+			{
+				System.out.println("Do not accept negative values for hours or numbers less than 6.00 for pay rate.");
+				payhour[i] = input.nextDouble();
+			}
+			 grosswage[i] = employhour[i] * payhour[i];
+		}
+		return grosswage;//return everything grosswage has to offer
+	}
+	
+	public static void returnwage(int employnum [], double grosswage [], Scanner input)
+	{
+		System.out.println("please choose an employ number.");
+		int number = input.nextInt();
+		while(number != employnum[0] && number != employnum[1] && number != employnum[2] && number != employnum[3] && number != employnum[4] && number != employnum[5] && number != employnum[6])
+		{
+			System.out.println("please re-enter the employ number.");
+			number = input.nextInt();
+		}
+		for(int i = 0; i < employnum.length; i++)
+		{
+			if(number == employnum[i])
+			{
+				System.out.println("employe number "+ (i+1) + " has a total wage of "+ grosswage[i]);
+				i = employnum.length;
+			}
+		}
+		
+	}
+	
+}//class bracket
